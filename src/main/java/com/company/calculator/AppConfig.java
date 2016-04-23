@@ -9,9 +9,15 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AppConfig {
+    private static final String MULTIPLICATION_OPERATION_CODE = "*";
+    private static final String DIVIDING_OPERATION_CODE = "/";
+
     @Bean
     public SimpleCalculator simpleCalculator () {
         SimpleCalculator simpleCalculator = new SimpleCalculator();
+
+        simpleCalculator.addOperation(MULTIPLICATION_OPERATION_CODE, new NumberMultiplication());
+        simpleCalculator.addOperation(DIVIDING_OPERATION_CODE, new NumberDividing());
 
         return simpleCalculator;
     }
