@@ -3,8 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="bootstrap" class="com.company.Bootstrap">
-    </bean>
-    <bean id="simpleCalculator" class="com.company.calculator.SimpleCalculator"/>
     <bean id="numberMultiplication" class="com.company.calculator.NumberMultiplication"/>
+    <bean id="numberDividing" class="com.company.calculator.NumberDividing"/>
+    <bean id="simpleCalculator" class="com.company.calculator.SimpleCalculator"/>
 </beans>
