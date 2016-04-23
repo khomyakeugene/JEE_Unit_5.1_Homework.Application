@@ -13,7 +13,7 @@ public class IncrementOperationTest extends NumberTest  {
 
     @Override
     protected double calcExpected(double operand_1, double operand_2) {
-        return operand_1 + 1;
+        return (long)operand_1 + 1;
     }
 
 }

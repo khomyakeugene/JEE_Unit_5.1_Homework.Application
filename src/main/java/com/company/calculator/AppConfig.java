@@ -14,6 +14,7 @@ public class AppConfig {
     private static final String SQUARE_ROOT_CODE = "sqrt";
     private static final String LOG10_CODE = "log10";
     private static final String LOG_CODE = "log";
+    private static final String INCREMENT_CODE = "++";
 
     @Bean
     public SimpleCalculator simpleCalculator () {
@@ -24,6 +25,7 @@ public class AppConfig {
         simpleCalculator.addOperation(SQUARE_ROOT_CODE, new SquareRoot());
         simpleCalculator.addOperation(LOG10_CODE, new Log10Operation());
         simpleCalculator.addOperation(LOG_CODE, new LogOperation());
+        simpleCalculator.addOperation(INCREMENT_CODE, new IncrementOperation());
 
         return simpleCalculator;
     }

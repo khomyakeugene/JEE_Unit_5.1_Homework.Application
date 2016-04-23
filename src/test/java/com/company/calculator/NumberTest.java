@@ -17,7 +17,7 @@ public abstract class NumberTest {
                 calcExpected(Double.parseDouble(operand_1), Double.parseDouble(operand_2))));
     }
 
-    @org.junit.Test(timeout = 1000)
+    @org.junit.Test//(timeout = 1000)
     public void executeTest() throws Exception {
         String operand_1 = Util.generateOperand();
         String operand_2 = Util.generateOperand();
@@ -27,6 +27,9 @@ public abstract class NumberTest {
         operands.add(operand_2);
         numberOperation.setOperands(operands);
 
-        assertEquals(expectedResult(operand_1, operand_2), numberOperation.execute());
+        String e = expectedResult(operand_1, operand_2);
+        String a = numberOperation.execute();
+
+        assertEquals(e, a);
     }
 }
