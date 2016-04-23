@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 public class AppConfig {
     private static final String MULTIPLICATION_OPERATION_CODE = "*";
     private static final String DIVIDING_OPERATION_CODE = "/";
+    private static final String SQUARE_ROOT_CODE = "sqrt";
 
     @Bean
     public SimpleCalculator simpleCalculator () {
@@ -18,6 +19,8 @@ public class AppConfig {
 
         simpleCalculator.addOperation(MULTIPLICATION_OPERATION_CODE, new NumberMultiplication());
         simpleCalculator.addOperation(DIVIDING_OPERATION_CODE, new NumberDividing());
+
+        simpleCalculator.addOperation(SQUARE_ROOT_CODE, new SquareRoot());
 
         return simpleCalculator;
     }
