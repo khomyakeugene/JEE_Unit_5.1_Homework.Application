@@ -6,4 +6,5 @@
     <bean id="bootstrap" class="com.company.Bootstrap">
     </bean>
     <bean id="simpleCalculator" class="com.company.calculator.SimpleCalculator"/>
+    <bean id="numberMultiplication" class="com.company.calculator.NumberMultiplication"/>
 </beans>
