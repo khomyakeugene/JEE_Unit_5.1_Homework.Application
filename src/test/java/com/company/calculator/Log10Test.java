@@ -1,0 +1,18 @@
+package com.company.calculator;
+
+import org.junit.BeforeClass;
+
+/**
+ * Created by Yevhen on 23.04.2016.
+ */
+public class Log10Test extends NumberTest {
+    @BeforeClass
+    public static void setUpClass() throws Exception {
+        numberOperation = new Log10();
+    }
+
+    @Override
+    protected double calcExpected(double operand_1, double operand_2) {
+        return Math.log10(operand_1);
+    }
+}

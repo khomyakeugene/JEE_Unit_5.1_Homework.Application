@@ -13,6 +13,7 @@ public class AppConfig {
     private static final String DIVIDING_OPERATION_CODE = "/";
     private static final String SQUARE_ROOT_CODE = "sqrt";
     private static final String LOG10_CODE = "log10";
+    private static final String LOG_CODE = "log";
 
     @Bean
     public SimpleCalculator simpleCalculator () {
@@ -22,6 +23,7 @@ public class AppConfig {
         simpleCalculator.addOperation(DIVIDING_OPERATION_CODE, new NumberDividing());
         simpleCalculator.addOperation(SQUARE_ROOT_CODE, new SquareRoot());
         simpleCalculator.addOperation(LOG10_CODE, new Log10());
+        simpleCalculator.addOperation(LOG_CODE, new Log());
 
         return simpleCalculator;
     }
