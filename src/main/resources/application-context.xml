@@ -5,4 +5,5 @@
 
     <bean id="bootstrap" class="com.company.Bootstrap">
     </bean>
+    <bean id="simpleCalculator" class="com.company.calculator.SimpleCalculator"/>
 </beans>
