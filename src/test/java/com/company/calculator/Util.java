@@ -24,4 +24,12 @@ public class Util {
     public static int getRandomInteger() {
         return random.nextInt(OPERAND_UPPER_BOUND);
     }
+
+    public static boolean getRandomBoolean() {
+        return random.nextBoolean();
+    }
+
+    public static String generateOperand() {
+        return Util.getRandomBoolean() ? Double.toString(getRandomDouble()) : Integer.toString(getRandomInteger());
+    }
 }
