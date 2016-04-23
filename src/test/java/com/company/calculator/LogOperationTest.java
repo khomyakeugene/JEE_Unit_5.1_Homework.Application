@@ -5,14 +5,14 @@ import org.junit.BeforeClass;
 /**
  * Created by Yevhen on 23.04.2016.
  */
-public class Log10Test extends NumberTest {
+public class LogOperationTest extends NumberTest {
     @BeforeClass
     public static void setUpClass() throws Exception {
-        numberOperation = new Log10();
+        numberOperation = new LogOperation();
     }
 
     @Override
     protected double calcExpected(double operand_1, double operand_2) {
-        return Math.log10(operand_1);
+        return Math.log(operand_1);
     }
 }

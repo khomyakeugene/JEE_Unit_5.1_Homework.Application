@@ -22,8 +22,8 @@ public class AppConfig {
         simpleCalculator.addOperation(MULTIPLICATION_OPERATION_CODE, new NumberMultiplication());
         simpleCalculator.addOperation(DIVIDING_OPERATION_CODE, new NumberDividing());
         simpleCalculator.addOperation(SQUARE_ROOT_CODE, new SquareRoot());
-        simpleCalculator.addOperation(LOG10_CODE, new Log10());
-        simpleCalculator.addOperation(LOG_CODE, new Log());
+        simpleCalculator.addOperation(LOG10_CODE, new Log10Operation());
+        simpleCalculator.addOperation(LOG_CODE, new LogOperation());
 
         return simpleCalculator;
     }
