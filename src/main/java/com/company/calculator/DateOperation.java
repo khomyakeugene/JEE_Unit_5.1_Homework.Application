@@ -11,7 +11,7 @@ import java.util.Date;
  */
 public abstract class DateOperation extends BinaryEmptyOperation implements Operation {
     private static final String[] USEFUL_DATE_PATTERNS = new String[] {
-            "dd/MM/yyyy", "dd/MM/yy", "dd.MM.yyyy", "dd.MM.yy", "dd-MM-yyyy", "dd-MM-yy"
+            "yyyy-MM-dd", "dd/MM/yyyy", "dd/MM/yy", "dd.MM.yyyy", "dd.MM.yy", "dd-MM-yyyy", "dd-MM-yy"
     };
 
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
@@ -57,7 +57,7 @@ public abstract class DateOperation extends BinaryEmptyOperation implements Oper
         Date result = null;
 
         for (String usefulDatePattern : USEFUL_DATE_PATTERNS) {
-            simpleDateFormat.applyLocalizedPattern(usefulDatePattern);
+            simpleDateFormat.applyPattern(usefulDatePattern);
             try {
                 result = simpleDateFormat.parse(data);
                 if (result != null) {
