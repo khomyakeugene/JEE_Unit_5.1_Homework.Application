@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
  */
 
 public class Utils {
-    public final static String PLEASE_REPEAT_ENTER =
+    private final static String PLEASE_REPEAT_ENTER =
             "%s was generated with data \"%s\". Please, repeat enter action";
 
     public static void printLine(String message) {
@@ -32,5 +32,18 @@ public class Utils {
                 printMessage(String.format(PLEASE_REPEAT_ENTER, e.getClass().getName(), e.getMessage()));
             }
         } while (true);
+    }
+
+    public static Integer parseInt(String data) {
+        Integer result;
+
+        try {
+            result = Integer.parseInt(data);
+
+        } catch (NullPointerException | NumberFormatException e) {
+            result = null;
+        }
+
+        return result;
     }
 }
