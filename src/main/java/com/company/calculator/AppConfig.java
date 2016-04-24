@@ -15,6 +15,7 @@ public class AppConfig {
     private static final String LOG10_CODE = "log10";
     private static final String LOG_CODE = "log";
     private static final String INCREMENT_CODE = "++";
+    private static final String DECREMENT_CODE = "--";
 
     @Bean
     public SimpleCalculator simpleCalculator () {
@@ -26,6 +27,7 @@ public class AppConfig {
         simpleCalculator.addOperation(LOG10_CODE, new Log10Operation());
         simpleCalculator.addOperation(LOG_CODE, new LogOperation());
         simpleCalculator.addOperation(INCREMENT_CODE, new IncrementOperation());
+        simpleCalculator.addOperation(DECREMENT_CODE, new DecrementOperation());
 
         return simpleCalculator;
     }
