@@ -14,6 +14,7 @@ public abstract class DateOperation extends BinaryEmptyOperation implements Oper
             "dd/MM/yyyy", "dd/MM/yy", "dd.MM.yyyy", "dd.MM.yy", "dd-MM-yyyy", "dd-MM-yy"
     };
 
+    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
     protected Date firstOperandDateRepresentation;
     protected Date secondOperandDateRepresentation;
     protected Integer firstOperandIntegerRepresentation;
@@ -54,7 +55,6 @@ public abstract class DateOperation extends BinaryEmptyOperation implements Oper
 
     protected Date convertToDate(String data) {
         Date result = null;
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
 
         for (String usefulDatePattern : USEFUL_DATE_PATTERNS) {
             simpleDateFormat.applyLocalizedPattern(usefulDatePattern);
@@ -68,5 +68,13 @@ public abstract class DateOperation extends BinaryEmptyOperation implements Oper
         }
 
         return result;
+    }
+
+    // Should be overridden in the descendant class
+    protected abstract Date calculate();
+
+    @Override
+    public final String execute() {
+        return simpleDateFormat.format(calculate());
     }
 }
