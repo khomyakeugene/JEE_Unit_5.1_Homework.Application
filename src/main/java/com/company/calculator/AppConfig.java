@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AppConfig {
+    private static final String ADDITION_OPERATION_CODE = "+";
+    private static final String SUBTRACT_OPERATION_CODE = "-";
     private static final String MULTIPLICATION_OPERATION_CODE = "*";
     private static final String DIVIDING_OPERATION_CODE = "/";
     private static final String SQUARE_ROOT_CODE = "sqrt";
@@ -30,6 +32,8 @@ public class AppConfig {
         simpleCalculator.addOperation(INCREMENT_CODE, new IncrementOperation());
         simpleCalculator.addOperation(DECREMENT_CODE, new DecrementOperation());
         simpleCalculator.addOperation(FACTORIAL_CODE, new FactorialOperation());
+        simpleCalculator.addOperation(ADDITION_OPERATION_CODE, new DateAdditionOperation());
+        simpleCalculator.addOperation(SUBTRACT_OPERATION_CODE, new DateSubtractOperation());
 
         return simpleCalculator;
     }
