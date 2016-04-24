@@ -19,6 +19,7 @@ public abstract class DateOperation extends BinaryEmptyOperation implements Oper
     protected Date secondOperandDateRepresentation;
     protected Integer firstOperandIntegerRepresentation;
     protected Integer secondOperandIntegerRepresentation;
+    private String usefulDatePattern;
 
     @Override
     public boolean isThisOperation(String inputExpression, ParseResult parseResult) {
@@ -56,11 +57,13 @@ public abstract class DateOperation extends BinaryEmptyOperation implements Oper
     protected Date convertToDate(String data) {
         Date result = null;
 
-        for (String usefulDatePattern : USEFUL_DATE_PATTERNS) {
-            simpleDateFormat.applyPattern(usefulDatePattern);
+        for (String datePattern : USEFUL_DATE_PATTERNS) {
+            simpleDateFormat.applyPattern(datePattern);
             try {
                 result = simpleDateFormat.parse(data);
                 if (result != null) {
+                    // Fix useful date-pattern
+                    usefulDatePattern = datePattern;
                     break;
                 }
             } catch (ParseException e) {
@@ -75,6 +78,8 @@ public abstract class DateOperation extends BinaryEmptyOperation implements Oper
 
     @Override
     public final String execute() {
+        simpleDateFormat.applyPattern(usefulDatePattern);
+
         return simpleDateFormat.format(calculate());
     }
 }
