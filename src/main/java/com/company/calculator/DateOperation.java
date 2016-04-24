@@ -10,7 +10,7 @@ import java.util.Date;
  * Created by Yevhen on 24.04.2016.
  */
 public abstract class DateOperation extends BinaryEmptyOperation implements Operation {
-    private static final String[] USEFUL_DATE_PATTERNS = new String[] {
+    public static final String[] USEFUL_DATE_PATTERNS = new String[] {
             "yyyy-MM-dd", "dd/MM/yyyy", "dd/MM/yy", "dd.MM.yyyy", "dd.MM.yy", "dd-MM-yyyy", "dd-MM-yy"
     };
 
