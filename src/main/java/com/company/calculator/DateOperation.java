@@ -2,12 +2,18 @@ package com.company.calculator;
 
 import com.company.util.Utils;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
  * Created by Yevhen on 24.04.2016.
  */
 public abstract class DateOperation extends BinaryEmptyOperation implements Operation {
+    private static final String[] USEFUL_DATE_PATTERNS = new String[] {
+            "dd/MM/yyyy", "dd/MM/yy", "dd.MM.yyyy", "dd.MM.yy", "dd-MM-yyyy", "dd-MM-yy"
+    };
+
     protected Date firstOperandDateRepresentation;
     protected Date secondOperandDateRepresentation;
     protected Integer firstOperandIntegerRepresentation;
@@ -47,6 +53,20 @@ public abstract class DateOperation extends BinaryEmptyOperation implements Oper
     }
 
     protected Date convertToDate(String data) {
-        return null;
+        Date result = null;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
+
+        for (String usefulDatePattern : USEFUL_DATE_PATTERNS) {
+            simpleDateFormat.applyLocalizedPattern(usefulDatePattern);
+            try {
+                result = simpleDateFormat.parse(data);
+                if (result != null) {
+                    break;
+                }
+            } catch (ParseException e) {
+            }
+        }
+
+        return result;
     }
 }
