@@ -1,5 +1,7 @@
 package com.company.calculator;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Random;
 
 /**
@@ -39,5 +41,12 @@ public class Util {
 
     public static String generateNumber() {
         return Util.getRandomBoolean() ? generateDoubleNumber() : generateIntegerNumber();
+    }
+
+    public static Date generateDate() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(random.nextInt(2017),random.nextInt(13),random.nextInt(29));
+
+        return calendar.getTime();
     }
 }

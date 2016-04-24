@@ -15,6 +15,14 @@ public abstract class OperationTest {
         OperationTest.operation = operation;
     }
 
+    public static Operation getOperation() {
+        return operation;
+    }
+
+    public ArrayList<String> getOperands() {
+        return operands;
+    }
+
     protected abstract void initOperands();
 
     protected abstract String expectedResult();
@@ -23,6 +31,10 @@ public abstract class OperationTest {
     public void executeTest() throws Exception {
         initOperands();
         operation.setOperands(operands);
+
+        String s1 = expectedResult();
+        String s2 = operation.execute();
+
         assertEquals(expectedResult(), operation.execute());
     }
 }
