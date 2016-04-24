@@ -8,7 +8,7 @@ import org.junit.BeforeClass;
 public class DecrementOperationTest extends IntegerTest {
     @BeforeClass
     public static void setUpClass() throws Exception {
-        numberOperation = new DecrementOperation();
+        setOperation(new DecrementOperation());
     }
 
     @Override

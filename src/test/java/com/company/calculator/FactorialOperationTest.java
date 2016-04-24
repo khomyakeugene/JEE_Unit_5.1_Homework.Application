@@ -9,7 +9,7 @@ import org.junit.BeforeClass;
 public class FactorialOperationTest extends IntegerTest {
     @BeforeClass
     public static void setUpClass() throws Exception {
-        numberOperation = new FactorialOperation();
+        setOperation(new FactorialOperation());
     }
 
     @Override
@@ -20,7 +20,7 @@ public class FactorialOperationTest extends IntegerTest {
     }
 
     @Override
-    protected String expectedResult(String operand_1, String operand_2) {
+    protected String expectedResult() {
         return Factorial.factorial(Long.parseLong(operand_1)).toString();
     }
 }
