@@ -1,6 +1,6 @@
 package com.company.calculator;
 
-import com.company.utils.Utils;
+import com.company.util.Utils;
 
 import java.util.Arrays;
 

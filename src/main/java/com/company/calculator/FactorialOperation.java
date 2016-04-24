@@ -1,6 +1,6 @@
 package com.company.calculator;
 
-import com.company.utils.Factorial;
+import com.company.util.Factorial;
 
 /**
  * Created by Yevhen on 24.04.2016.

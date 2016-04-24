@@ -1,6 +1,6 @@
 package com.company.calculator;
 
-import com.company.utils.Factorial;
+import com.company.util.Factorial;
 import org.junit.BeforeClass;
 
 /**
