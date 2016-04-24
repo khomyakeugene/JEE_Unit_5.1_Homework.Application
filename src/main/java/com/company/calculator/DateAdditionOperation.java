@@ -3,6 +3,7 @@ package com.company.calculator;
 import com.company.util.DateCalculator;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Yevhen on 24.04.2016.
@@ -12,8 +13,8 @@ public class DateAdditionOperation extends DateOperation implements Operation {
     private Integer daysOperand;
 
     @Override
-    public boolean isThisOperation(String inputExpression, ParseResult parseResult) {
-        boolean result = super.isThisOperation(inputExpression, parseResult);
+    public boolean initOperationData(List<String> operandList) {
+        boolean result = super.initOperationData(operandList);
 
         if (result) {
             // It is possible only to add Date and Integer(days count)
