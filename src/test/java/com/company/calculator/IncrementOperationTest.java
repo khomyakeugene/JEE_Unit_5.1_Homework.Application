@@ -5,7 +5,7 @@ import org.junit.BeforeClass;
 /**
  * Created by Yevhen on 24.04.2016.
  */
-public class IncrementOperationTest extends NumberTest  {
+public class IncrementOperationTest extends IntegerTest  {
     @BeforeClass
     public static void setUpClass() throws Exception {
         numberOperation = new IncrementOperation();
@@ -13,7 +13,6 @@ public class IncrementOperationTest extends NumberTest  {
 
     @Override
     protected double calcExpected(double operand_1, double operand_2) {
-        return (long)operand_1 + 1;
+        return Math.round(operand_1) + 1;
     }
-
 }

@@ -9,6 +9,7 @@ import static org.junit.Assert.assertEquals;
  */
 public abstract class NumberTest {
     protected static NumberOperation numberOperation;
+    protected static boolean onlyIntegerValues = false;
 
     protected abstract double calcExpected(double operand_1, double  operand_2);
 
@@ -17,19 +18,16 @@ public abstract class NumberTest {
                 calcExpected(Double.parseDouble(operand_1), Double.parseDouble(operand_2))));
     }
 
-    @org.junit.Test//(timeout = 1000)
+    @org.junit.Test(timeout = 1000)
     public void executeTest() throws Exception {
-        String operand_1 = Util.generateOperand();
-        String operand_2 = Util.generateOperand();
+        String operand_1 = onlyIntegerValues ? Util.generateIntegerNumber() : Util.generateNumber();
+        String operand_2 = onlyIntegerValues ? Util.generateIntegerNumber() : Util.generateNumber();
 
         ArrayList<String> operands = new ArrayList<>();
         operands.add(operand_1);
         operands.add(operand_2);
         numberOperation.setOperands(operands);
 
-        String e = expectedResult(operand_1, operand_2);
-        String a = numberOperation.execute();
-
-        assertEquals(e, a);
+        assertEquals(expectedResult(operand_1, operand_2), numberOperation.execute());
     }
 }
