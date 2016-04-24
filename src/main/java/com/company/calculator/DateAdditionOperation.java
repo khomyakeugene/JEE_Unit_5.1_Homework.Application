@@ -1,6 +1,7 @@
 package com.company.calculator;
 
-import java.util.Calendar;
+import com.company.util.DateCalculator;
+
 import java.util.Date;
 
 /**
@@ -36,10 +37,6 @@ public class DateAdditionOperation extends DateOperation implements Operation {
 
     @Override
     protected Date calculate() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(dateOperand);
-        calendar.add(Calendar.DATE, daysOperand);
-
-        return calendar.getTime();
+        return  DateCalculator.add(dateOperand, daysOperand);
     }
 }
