@@ -16,6 +16,7 @@ public class AppConfig {
     private static final String LOG_CODE = "log";
     private static final String INCREMENT_CODE = "++";
     private static final String DECREMENT_CODE = "--";
+    private static final String FACTORIAL_CODE = "!";
 
     @Bean
     public SimpleCalculator simpleCalculator () {
@@ -28,6 +29,7 @@ public class AppConfig {
         simpleCalculator.addOperation(LOG_CODE, new LogOperation());
         simpleCalculator.addOperation(INCREMENT_CODE, new IncrementOperation());
         simpleCalculator.addOperation(DECREMENT_CODE, new DecrementOperation());
+        simpleCalculator.addOperation(FACTORIAL_CODE, new FactorialOperation());
 
         return simpleCalculator;
     }

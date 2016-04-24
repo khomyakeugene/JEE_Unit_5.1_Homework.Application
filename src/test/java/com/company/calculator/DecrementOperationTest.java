@@ -5,7 +5,7 @@ import org.junit.BeforeClass;
 /**
  * Created by Yevhen on 24.04.2016.
  */
-public class DecrementOperationTest  extends IntegerTest {
+public class DecrementOperationTest extends IntegerTest {
     @BeforeClass
     public static void setUpClass() throws Exception {
         numberOperation = new DecrementOperation();
