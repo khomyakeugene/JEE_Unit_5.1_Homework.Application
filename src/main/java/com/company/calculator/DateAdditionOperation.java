@@ -1,6 +1,6 @@
 package com.company.calculator;
 
-import com.company.util.DateCalculator;
+import com.company.util.Utils;
 
 import java.util.Date;
 import java.util.List;
@@ -29,7 +29,7 @@ public class DateAdditionOperation extends DateOperation implements Operation {
                 // In this case it is guaranteed by <super.isThisOperation> that <secondOperandDateRepresentation>
                 // and <secondOperandIntegerRepresentation> are correctly initialized
                 dateOperand = secondOperandDateRepresentation;
-                daysOperand = secondOperandIntegerRepresentation;
+                daysOperand = firstOperandIntegerRepresentation;
             }
         }
 
@@ -38,6 +38,6 @@ public class DateAdditionOperation extends DateOperation implements Operation {
 
     @Override
     protected Date calculate() {
-        return  DateCalculator.add(dateOperand, daysOperand);
+        return  Utils.add(dateOperand, daysOperand);
     }
 }

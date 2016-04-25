@@ -1,6 +1,6 @@
 package com.company.calculator;
 
-import com.company.util.DateCalculator;
+import com.company.util.Utils;
 import org.junit.BeforeClass;
 
 import java.text.SimpleDateFormat;
@@ -35,6 +35,6 @@ public class DateAdditionOperationTest extends OperationTest {
 
         ((DateOperation)getOperation()).initOperationData(getOperands());
 
-        return simpleDateFormat.format(DateCalculator.add(firstOperand, secondOperand));
+        return simpleDateFormat.format(Utils.add(firstOperand, secondOperand));
     }
 }

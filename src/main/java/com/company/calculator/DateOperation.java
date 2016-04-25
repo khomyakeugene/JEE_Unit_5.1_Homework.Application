@@ -11,7 +11,7 @@ import java.util.List;
  * Created by Yevhen on 24.04.2016.
  */
 public abstract class DateOperation extends BinaryEmptyOperation implements Operation {
-    public static final String[] USEFUL_DATE_PATTERNS = new String[] {
+    private static final String[] USEFUL_DATE_PATTERNS = new String[] {
             "yyyy-MM-dd", "dd/MM/yyyy", "dd/MM/yy", "dd.MM.yyyy", "dd.MM.yy", "dd-MM-yyyy", "dd-MM-yy"
     };
 
@@ -58,7 +58,7 @@ public abstract class DateOperation extends BinaryEmptyOperation implements Oper
                 initOperationData(parseResult.operandList());
     }
 
-    protected Date convertToDate(String data) {
+    private Date convertToDate(String data) {
         Date result = null;
 
         for (String datePattern : USEFUL_DATE_PATTERNS) {
@@ -78,12 +78,18 @@ public abstract class DateOperation extends BinaryEmptyOperation implements Oper
     }
 
     // Should be overridden in the descendant class
-    protected abstract Date calculate();
+    protected Date calculate() {
+        return null;
+    }
 
     @Override
-    public final String execute() {
+    public String execute() {
+        return dateStringRepresentation(calculate());
+    }
+
+    protected String dateStringRepresentation(Date date) {
         simpleDateFormat.applyPattern(usefulDatePattern);
 
-        return simpleDateFormat.format(calculate());
+        return simpleDateFormat.format(date);
     }
 }

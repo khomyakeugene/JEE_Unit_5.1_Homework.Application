@@ -1,13 +1,36 @@
 package com.company.calculator;
 
-import java.util.Date;
+import com.company.util.Utils;
+
+import java.time.temporal.ChronoUnit;
 
 /**
  * Created by Yevhen on 24.04.2016.
  */
 public class DateSubtractOperation extends DateOperation implements Operation {
     @Override
-    protected Date calculate() {
-        return null;
+    public boolean isThisOperation(String inputExpression, ParseResult parseResult) {
+        return super.isThisOperation(inputExpression, parseResult) &&
+                (firstOperandDateRepresentation != null);
+    }
+
+    @Override
+    public String execute() {
+        String result;
+
+        // The first operand is always the date (<firstOperandDateRepresentation> is always not null,
+        // see method <isThisOperation>)
+        if (secondOperandDateRepresentation != null) {
+            // Try to subtract two dates
+            result = Long.toString(ChronoUnit.DAYS.between(Utils.DateToLocalDate(secondOperandDateRepresentation),
+                    Utils.DateToLocalDate(firstOperandDateRepresentation)));
+        } else {
+            // In this case it is guaranteed by <super.isThisOperation> that
+            // <secondOperandIntegerRepresentation> are correctly initialized
+            result = dateStringRepresentation(
+                    Utils.add(firstOperandDateRepresentation, -secondOperandIntegerRepresentation));
+        }
+
+        return result;
     }
 }

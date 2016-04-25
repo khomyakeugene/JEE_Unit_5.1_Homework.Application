@@ -3,6 +3,12 @@ package com.company.util;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by Yevgen on 06.01.2016.
@@ -45,5 +51,20 @@ public class Utils {
         }
 
         return result;
+    }
+
+    public static Date add(Date date, int days) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.DATE, days);
+
+        return calendar.getTime();
+    }
+
+    public static LocalDate DateToLocalDate(Date date) {
+        Instant instant = date.toInstant();
+        ZonedDateTime zdt = instant.atZone(ZoneId.systemDefault());
+
+        return zdt.toLocalDate();
     }
 }
