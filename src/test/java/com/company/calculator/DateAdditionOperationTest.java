@@ -35,6 +35,6 @@ public class DateAdditionOperationTest extends OperationTest {
 
         ((DateOperation)getOperation()).initOperationData(getOperands());
 
-        return simpleDateFormat.format(Utils.add(firstOperand, secondOperand));
+        return simpleDateFormat.format(Utils.dateAdd(firstOperand, secondOperand));
     }
 }

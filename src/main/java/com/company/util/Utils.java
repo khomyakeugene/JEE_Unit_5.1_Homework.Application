@@ -7,6 +7,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -53,7 +54,14 @@ public class Utils {
         return result;
     }
 
-    public static Date add(Date date, int days) {
+    public static LocalDate DateToLocalDate(Date date) {
+        Instant instant = date.toInstant();
+        ZonedDateTime zonedDateTime = instant.atZone(ZoneId.systemDefault());
+
+        return zonedDateTime.toLocalDate();
+    }
+
+    public static Date dateAdd(Date date, int days) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         calendar.add(Calendar.DATE, days);
@@ -61,10 +69,7 @@ public class Utils {
         return calendar.getTime();
     }
 
-    public static LocalDate DateToLocalDate(Date date) {
-        Instant instant = date.toInstant();
-        ZonedDateTime zdt = instant.atZone(ZoneId.systemDefault());
-
-        return zdt.toLocalDate();
+    public static long dateSub(Date date1, Date date2) {
+        return ChronoUnit.DAYS.between(Utils.DateToLocalDate(date2), Utils.DateToLocalDate(date1));
     }
 }

@@ -17,7 +17,7 @@ public class DateAdditionOperation extends DateOperation implements Operation {
         boolean result = super.initOperationData(operandList);
 
         if (result) {
-            // It is possible only to add Date and Integer(days count)
+            // It is possible only to dateAdd Date and Integer(days count)
             // Also initialize <dateOperand> and <daysOperand> using further in the method <execute>
             if (firstOperandDateRepresentation != null) {
                 result = secondOperandIntegerRepresentation != null;
@@ -38,6 +38,6 @@ public class DateAdditionOperation extends DateOperation implements Operation {
 
     @Override
     protected Date calculate() {
-        return  Utils.add(dateOperand, daysOperand);
+        return  Utils.dateAdd(dateOperand, daysOperand);
     }
 }
