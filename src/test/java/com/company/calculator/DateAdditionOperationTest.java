@@ -9,9 +9,7 @@ import java.util.Date;
 /**
  * Created by Yevhen on 24.04.2016.
  */
-public class DateAdditionOperationTest extends OperationTest {
-    private static final String DATE_PATTERN = "dd.MM.yyyy";
-
+public class DateAdditionOperationTest extends DateOperationTest {
     private Date firstOperand;
     private Integer secondOperand;
 
