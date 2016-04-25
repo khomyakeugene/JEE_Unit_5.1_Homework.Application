@@ -3,13 +3,12 @@ package com.company.calculator;
 import com.company.util.Util;
 import org.junit.BeforeClass;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
  * Created by Yevhen on 25.04.2016.
  */
-public class DateSubtractDateAndDateOperationTest extends DateOperationTest {
+public class DateSubtractOperationDateAndDateTest extends DateOperationTest {
     private Date firstOperand;
     private Date secondOperand;
 
@@ -23,14 +22,12 @@ public class DateSubtractDateAndDateOperationTest extends DateOperationTest {
         firstOperand = com.company.calculator.Util.generateDate();
         secondOperand = com.company.calculator.Util.generateDate();
 
-        operands.add(new SimpleDateFormat(DATE_PATTERN).format(firstOperand));
-        operands.add(new SimpleDateFormat(DATE_PATTERN).format(secondOperand));
+        operands.add(simpleDateFormat.format(firstOperand));
+        operands.add(simpleDateFormat.format(secondOperand));
     }
 
     @Override
     protected String expectedResult() {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DATE_PATTERN);
-
         ((DateOperation)getOperation()).initOperationData(getOperands());
 
         return Long.toString(Util.dateSub(firstOperand, secondOperand));

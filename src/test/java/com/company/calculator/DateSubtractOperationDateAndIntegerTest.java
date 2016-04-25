@@ -3,18 +3,17 @@ package com.company.calculator;
 import org.junit.BeforeClass;
 
 /**
- * Created by Yevhen on 24.04.2016.
+ * Created by Yevhen on 25.04.2016.
  */
-public class DateAdditionOperationTest extends DateOperationDateAndIntegerTest {
-
+public class DateSubtractOperationDateAndIntegerTest extends DateOperationDateAndIntegerTest {
     @BeforeClass
     public static void setUpClass() throws Exception {
-        setOperation(new DateAdditionOperation());
+        setOperation(new DateSubtractOperation());
     }
 
     @Override
     protected String expectedResult() {
-        setSubtract(false);
+        setSubtract(true);
 
         return super.expectedResult();
     }

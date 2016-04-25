@@ -1,21 +1,19 @@
 package com.company.calculator;
 
 import com.company.util.Util;
-import org.junit.BeforeClass;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
  * Created by Yevhen on 25.04.2016.
  */
-public class DateSubtractDateAndIntegerOperationTest extends DateOperationTest {
+public class DateOperationDateAndIntegerTest extends DateOperationTest {
     private Date firstOperand;
     private Integer secondOperand;
+    private boolean subtract;
 
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-        setOperation(new DateSubtractOperation());
+    protected void setSubtract(boolean subtract) {
+        this.subtract = subtract;
     }
 
     @Override
@@ -23,16 +21,14 @@ public class DateSubtractDateAndIntegerOperationTest extends DateOperationTest {
         firstOperand = com.company.calculator.Util.generateDate();
         secondOperand = com.company.calculator.Util.getRandomInteger();
 
-        operands.add(new SimpleDateFormat(DATE_PATTERN).format(firstOperand));
+        operands.add(simpleDateFormat.format(firstOperand));
         operands.add(secondOperand.toString());
     }
 
     @Override
     protected String expectedResult() {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DATE_PATTERN);
-
         ((DateOperation)getOperation()).initOperationData(getOperands());
 
-        return simpleDateFormat.format(Util.dateAdd(firstOperand, -secondOperand));
+        return simpleDateFormat.format(Util.dateAdd(firstOperand, (subtract ? -1 : 1) * secondOperand));
     }
 }
