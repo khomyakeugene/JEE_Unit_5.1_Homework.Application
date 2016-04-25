@@ -1,6 +1,6 @@
 package com.company.calculator;
 
-import com.company.util.Utils;
+import com.company.util.Util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -36,13 +36,13 @@ public abstract class DateOperation extends BinaryEmptyOperation implements Oper
             // One of the operands can be Integer
             if (firstOperandDateRepresentation == null) {
                 // Try to recognize first operand as Integer
-                firstOperandIntegerRepresentation = Utils.parseInt(firstOperand);
+                firstOperandIntegerRepresentation = Util.parseInt(firstOperand);
                 // Only Integer could be one of the not-date operands in date-operation
                 result = firstOperandIntegerRepresentation != null;
             }
             if (secondOperandDateRepresentation == null) {
                 // Try to recognize second operand as Integer
-                secondOperandIntegerRepresentation = Utils.parseInt(secondOperand);
+                secondOperandIntegerRepresentation = Util.parseInt(secondOperand);
                 // Only Integer could be one of the not-date operands in date-operation
                 result = secondOperandIntegerRepresentation != null;
             }

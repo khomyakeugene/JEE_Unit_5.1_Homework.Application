@@ -15,7 +15,7 @@ import java.util.Date;
  * Created by Yevgen on 06.01.2016.
  */
 
-public class Utils {
+public class Util {
     private final static String PLEASE_REPEAT_ENTER =
             "%s was generated with data \"%s\". Please, repeat enter action";
 
@@ -70,6 +70,6 @@ public class Utils {
     }
 
     public static long dateSub(Date date1, Date date2) {
-        return ChronoUnit.DAYS.between(Utils.DateToLocalDate(date2), Utils.DateToLocalDate(date1));
+        return ChronoUnit.DAYS.between(Util.DateToLocalDate(date2), Util.DateToLocalDate(date1));
     }
 }

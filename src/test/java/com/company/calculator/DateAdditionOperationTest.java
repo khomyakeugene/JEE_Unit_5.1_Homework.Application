@@ -1,6 +1,6 @@
 package com.company.calculator;
 
-import com.company.util.Utils;
+import com.company.util.Util;
 import org.junit.BeforeClass;
 
 import java.text.SimpleDateFormat;
@@ -20,8 +20,8 @@ public class DateAdditionOperationTest extends DateOperationTest {
 
     @Override
     protected void initOperands() {
-        firstOperand = Util.generateDate();
-        secondOperand = Util.getRandomInteger();
+        firstOperand = com.company.calculator.Util.generateDate();
+        secondOperand = com.company.calculator.Util.getRandomInteger();
 
         operands.add(new SimpleDateFormat(DATE_PATTERN).format(firstOperand));
         operands.add(secondOperand.toString());
@@ -33,6 +33,6 @@ public class DateAdditionOperationTest extends DateOperationTest {
 
         ((DateOperation)getOperation()).initOperationData(getOperands());
 
-        return simpleDateFormat.format(Utils.dateAdd(firstOperand, secondOperand));
+        return simpleDateFormat.format(Util.dateAdd(firstOperand, secondOperand));
     }
 }

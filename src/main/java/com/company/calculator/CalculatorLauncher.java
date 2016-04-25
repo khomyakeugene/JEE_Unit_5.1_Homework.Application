@@ -1,6 +1,6 @@
 package com.company.calculator;
 
-import com.company.util.Utils;
+import com.company.util.Util;
 
 import java.util.Arrays;
 
@@ -16,17 +16,17 @@ public class CalculatorLauncher {
         String expression;
 
         do {
-            expression = Utils.readInputString(String.format(PROMPT_MESSAGE,
+            expression = Util.readInputString(String.format(PROMPT_MESSAGE,
                     Arrays.toString(simpleCalculator.operationCodeList())));
             if (!expression.isEmpty()) {
                 try {
-                    Utils.printMessage(String.format(RESULT_PATTERN, expression, simpleCalculator.execute(expression)));
+                    Util.printMessage(String.format(RESULT_PATTERN, expression, simpleCalculator.execute(expression)));
                 } catch (IllegalArgumentException e) {
-                    Utils.printMessage(e.getMessage());
+                    Util.printMessage(e.getMessage());
                 }
             }
         } while (!expression.isEmpty());
 
-        Utils.printMessage(FAREWELL_MESSAGE);
+        Util.printMessage(FAREWELL_MESSAGE);
     }
 }

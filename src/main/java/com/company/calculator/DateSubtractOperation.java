@@ -1,6 +1,6 @@
 package com.company.calculator;
 
-import com.company.util.Utils;
+import com.company.util.Util;
 
 /**
  * Created by Yevhen on 24.04.2016.
@@ -20,12 +20,12 @@ public class DateSubtractOperation extends DateOperation implements Operation {
         // see method <isThisOperation>)
         if (secondOperandDateRepresentation != null) {
             // Try to subtract two dates
-            result = Long.toString(Utils.dateSub(firstOperandDateRepresentation, secondOperandDateRepresentation));
+            result = Long.toString(Util.dateSub(firstOperandDateRepresentation, secondOperandDateRepresentation));
         } else {
             // In this case it is guaranteed by <super.isThisOperation> that
             // <secondOperandIntegerRepresentation> are correctly initialized
             result = dateStringRepresentation(
-                    Utils.dateAdd(firstOperandDateRepresentation, -secondOperandIntegerRepresentation));
+                    Util.dateAdd(firstOperandDateRepresentation, -secondOperandIntegerRepresentation));
         }
 
         return result;
