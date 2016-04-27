@@ -1,6 +1,5 @@
 package com.company.calculator;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
@@ -10,12 +9,8 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
  */
 
 @Configuration
-@EnableAspectJAutoProxy
+@EnableAspectJAutoProxy(proxyTargetClass=true)
 public class AppConfig {
-    @Autowired
-    private SimpleCalculator simpleCalculator;
-
-
     private static final String ADDITION_OPERATION_CODE = "+";
     private static final String SUBTRACT_OPERATION_CODE = "-";
     private static final String MULTIPLICATION_OPERATION_CODE = "*";
@@ -29,7 +24,7 @@ public class AppConfig {
 
     @Bean
     public SimpleCalculator simpleCalculator () {
-        simpleCalculator = new SimpleCalculator();
+        SimpleCalculator simpleCalculator = new SimpleCalculator();
 
         simpleCalculator.addOperation(MULTIPLICATION_OPERATION_CODE, new NumberMultiplicationOperation());
         simpleCalculator.addOperation(DIVIDING_OPERATION_CODE, new NumberDividingOperation());
