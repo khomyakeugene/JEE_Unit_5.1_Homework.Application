@@ -22,7 +22,7 @@ public class MethodCallLogger {
     }
 
     private static void initLogger() {
-        Logger logger = Logger.getLogger(getApplicationMainClass());
+        logger = Logger.getLogger(getApplicationMainClass());
 
         // Set up a simple configuration that logs on the console.
         BasicConfigurator.configure();
@@ -48,38 +48,42 @@ public class MethodCallLogger {
     public static String logMessage(JoinPoint joinPoint) {
         Signature signature = joinPoint.getSignature();
 
-        return String.format(MESSAGE_PATTERN, signature.getDeclaringTypeName(),
+        String fullMethodName = String.format(MESSAGE_PATTERN, signature.getDeclaringTypeName(),
                 signature.getName());
+
+        return fullMethodName;
    }
 
     // printing methods:
-    public void trace(JoinPoint joinPoint) {
+    public static void trace(JoinPoint joinPoint) {
         getLogger().trace(logMessage(joinPoint));
     }
 
 
-    public void debug(JoinPoint joinPoint) {
+    public static void debug(JoinPoint joinPoint) {
         getLogger().debug(logMessage(joinPoint));
     }
 
-    public void info(JoinPoint joinPoint) {
-        getLogger().info(logMessage(joinPoint));
+    public static void info(JoinPoint joinPoint) {
+        String message = logMessage(joinPoint);
+
+        getLogger().info(message);
     }
 
-    public void warn(JoinPoint joinPoint) {
+    public static void warn(JoinPoint joinPoint) {
         getLogger().warn(logMessage(joinPoint));
     }
 
-    public void error(JoinPoint joinPoint) {
+    public static void error(JoinPoint joinPoint) {
         getLogger().error(logMessage(joinPoint));
     }
 
-    public void fatal(JoinPoint joinPoint) {
+    public static void fatal(JoinPoint joinPoint) {
         getLogger().fatal(logMessage(joinPoint));
     }
 
     // generic printing method
-    public void log(Level l, JoinPoint joinPoint) {
+    public static void log(Level l, JoinPoint joinPoint) {
         getLogger().log(l, logMessage(joinPoint));
     }
 }

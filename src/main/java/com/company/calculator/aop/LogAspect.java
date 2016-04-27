@@ -12,6 +12,6 @@ import org.aspectj.lang.annotation.Before;
 public class LogAspect {
     @Before("execution (public * com.company.calculator.library..*(..))")
     public void onExecute(JoinPoint joinPoint) throws Throwable {
-        System.out.println("LogAspect: Start of Before execution of: " + System.getProperty("program.name"));
+        MethodCallLogger.info(joinPoint);
     }
 }
