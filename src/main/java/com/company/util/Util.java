@@ -19,7 +19,7 @@ public class Util {
     private final static String PLEASE_REPEAT_ENTER =
             "%s was generated with data \"%s\". Please, repeat enter action";
 
-    public static void printLine(String message) {
+    private static void printLine(String message) {
         System.out.print(message);
     }
 
@@ -71,5 +71,12 @@ public class Util {
 
     public static long dateSub(Date date1, Date date2) {
         return ChronoUnit.DAYS.between(Util.DateToLocalDate(date2), Util.DateToLocalDate(date1));
+    }
+
+    public static Class getApplicationMainClass() {
+        StackTraceElement[] stack = Thread.currentThread ().getStackTrace ();
+        StackTraceElement main = stack[stack.length - 1];
+
+        return main.getClass();
     }
 }

@@ -102,6 +102,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.21</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.company</groupId>
             <artifactId>JEE_Unit_5.1_Homework.Library</artifactId>
             <version>1.0</version>
