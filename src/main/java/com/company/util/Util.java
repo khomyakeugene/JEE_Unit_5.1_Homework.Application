@@ -3,7 +3,10 @@ package com.company.util;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.security.CodeSource;
+import java.security.ProtectionDomain;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -75,16 +78,93 @@ public class Util {
         return DateToLocalDate(date2).until(DateToLocalDate(date1), DAYS);
     }
 
-    public static Class getApplicationMainClass() {
-        StackTraceElement[] stack = Thread.currentThread ().getStackTrace ();
+    public static String getApplicationMainClassName() {
+        StackTraceElement[] stack = Thread.currentThread().getStackTrace();
         StackTraceElement main = stack[stack.length - 1];
 
-        return main.getClass();
+        return main.getClassName();
     }
+
+    public static Class getApplicationMainClass() {
+        Class result;
+
+        try {
+            result = Class.forName(getApplicationMainClassName());
+        } catch (ClassNotFoundException e) {
+            // Unfortunately, try to get it from stack directly
+            StackTraceElement[] stack = Thread.currentThread().getStackTrace();
+            StackTraceElement main = stack[stack.length - 1];
+            result = main.getClass();
+        }
+
+        StackTraceElement[] stack = Thread.currentThread().getStackTrace();
+        StackTraceElement main = stack[stack.length - 1];
+        result = main.getClass();
+
+
+        return result;
+    }
+
 
     public static String getResourceFilePath(String fileName) {
         URL url = Util.class.getClassLoader().getResource(fileName);
 
-        return (url != null) ? url.getFile() : null;
+        System.out.println("URL: " + url);
+        try {
+            System.out.println("URI: " + url.toURI());
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+
+        return (url != null) ? url.getPath() : null;
+    }
+
+    public static String getApplicationPath() {
+        Class mainClass = getApplicationMainClass();
+
+        ProtectionDomain protectionDomain = mainClass.getProtectionDomain();
+        System.out.println("protectionDomain: " + protectionDomain);
+        if (protectionDomain != null) {
+            CodeSource codeSource = protectionDomain.getCodeSource();
+            if (codeSource != null) {
+                URL url = codeSource.getLocation();
+                System.out.println("protectionDomain.codeSource.getLocation(): " + url);
+            }
+        }
+
+        //String s = mainClass.getProtectionDomain().getCodeSource().getLocation().getPath();
+        System.out.println("BBBB");
+/*
+        System.getProperties().stringPropertyNames().forEach(s -> {
+            System.out.println(s + " : " + System.getProperties().getProperty(s));
+
+        });
+*/
+        return "mmm";
+    }
+
+    public static String getApplicationName() {
+        // Tempro
+        // return  Util.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+
+        System.out.println(getApplicationPath());
+/*
+        Class mainClass = getApplicationMainClass();
+
+        String path = mainClass.getResource(mainClass.getSimpleName() + ".class").getFile();
+        URL uu = ClassLoader.getSystemClassLoader().getResource(path);
+        path = uu.getFile();
+
+        ProtectionDomain p = mainClass.getProtectionDomain();
+        CodeSource cs = p.getCodeSource();
+        URL location = cs.getLocation();
+
+        String sss = location.getPath();
+        String sssss= location.getFile();
+        String fn = new java.io.File(sss).getName();
+
+        String s = getResourceFilePath(getApplicationMainClassName());
+*/
+        return "ddd";
     }
 }

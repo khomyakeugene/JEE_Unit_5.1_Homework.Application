@@ -26,7 +26,11 @@ public class MethodCallLogger {
         logger = Logger.getLogger(getApplicationMainClass());
 
         // Configure logger from ${resourcePath}/LOG4J_CONFIG_FILENAME file
+        System.out.println("initLogger 0");
         PropertyConfigurator.configure(Util.getResourceFilePath(LOG4J_CONFIG_FILENAME));
+        System.out.println("initLogger 1");
+        PropertyConfigurator.configure(LOG4J_CONFIG_FILENAME);
+        System.out.println("initLogger 2");
     }
 
     public static MethodCallLogger getInstance() {
@@ -47,6 +51,8 @@ public class MethodCallLogger {
 
     public static String logMessage(JoinPoint joinPoint) {
         Signature signature = joinPoint.getSignature();
+
+  //      String s = Util.getApplicationName();
 
         String fullMethodName = String.format(MESSAGE_PATTERN, signature.getDeclaringTypeName(),
                 signature.getName());
