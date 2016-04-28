@@ -32,7 +32,6 @@ public class Util {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
         printMessage(enterMessageInvitation);
-
         do {
             try {
                 return bufferedReader.readLine();
