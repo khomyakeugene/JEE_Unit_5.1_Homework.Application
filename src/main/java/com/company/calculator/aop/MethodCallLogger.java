@@ -1,5 +1,6 @@
 package com.company.calculator.aop;
 
+import com.company.util.Util;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -24,15 +25,13 @@ public class MethodCallLogger {
     private static void initLogger() {
         logger = Logger.getLogger(getApplicationMainClass());
 
-        // Set up a simple configuration that logs on the console.
-        // BasicConfigurator.configure();
-        PropertyConfigurator.configure(LOG4J_CONFIG_FILENAME);
+        // Configure logger from ${resourcePath}/LOG4J_CONFIG_FILENAME file
+        PropertyConfigurator.configure(Util.getResourceFilePath(LOG4J_CONFIG_FILENAME));
     }
 
     public static MethodCallLogger getInstance() {
         if (instance == null) {
             instance = new MethodCallLogger();
-            initLogger();
         }
 
         return instance;
@@ -65,9 +64,7 @@ public class MethodCallLogger {
     }
 
     public static void info(JoinPoint joinPoint) {
-        String message = logMessage(joinPoint);
-
-        getLogger().info(message);
+        getLogger().info(logMessage(joinPoint));
     }
 
     public static void warn(JoinPoint joinPoint) {

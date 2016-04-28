@@ -3,13 +3,15 @@ package com.company.util;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.URL;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Date;
+
+import static java.time.temporal.ChronoUnit.DAYS;
 
 /**
  * Created by Yevgen on 06.01.2016.
@@ -70,7 +72,7 @@ public class Util {
     }
 
     public static long dateSub(Date date1, Date date2) {
-        return ChronoUnit.DAYS.between(Util.DateToLocalDate(date2), Util.DateToLocalDate(date1));
+        return DateToLocalDate(date2).until(DateToLocalDate(date1), DAYS);
     }
 
     public static Class getApplicationMainClass() {
@@ -78,5 +80,11 @@ public class Util {
         StackTraceElement main = stack[stack.length - 1];
 
         return main.getClass();
+    }
+
+    public static String getResourceFilePath(String fileName) {
+        URL url = Util.class.getClassLoader().getResource(fileName);
+
+        return (url != null) ? url.getFile() : null;
     }
 }
