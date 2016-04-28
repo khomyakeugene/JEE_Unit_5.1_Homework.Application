@@ -96,19 +96,4 @@ public class Util {
 
         return result;
     }
-
-    public static String getApplicationName() {
-        String result;
-
-        try {
-            result = getApplicationMainClass().getProtectionDomain().getCodeSource().getLocation().getFile();
-        } catch (NullPointerException e) {
-            // Unfortunately, it is difficult to recognize why when it is executed "under IntelliJ IDEA",
-            // class.getProtectionDomain() could return null, but, in this case, there is kind of compromise -
-            // just let return the name of the main class
-            result = getApplicationMainClassName();
-        }
-
-        return result;
-    }
 }
