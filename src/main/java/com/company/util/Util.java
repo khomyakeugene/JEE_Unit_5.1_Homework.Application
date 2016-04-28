@@ -3,7 +3,6 @@ package com.company.util;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.security.CodeSource;
 import java.security.ProtectionDomain;
@@ -91,33 +90,16 @@ public class Util {
         try {
             result = Class.forName(getApplicationMainClassName());
         } catch (ClassNotFoundException e) {
-            // Unfortunately, try to get it from stack directly
+            // Unfortunately, cannot recognize what could be the reason of such situation, but
+            // try to get it from stack directly
             StackTraceElement[] stack = Thread.currentThread().getStackTrace();
             StackTraceElement main = stack[stack.length - 1];
             result = main.getClass();
         }
 
-        StackTraceElement[] stack = Thread.currentThread().getStackTrace();
-        StackTraceElement main = stack[stack.length - 1];
-        result = main.getClass();
-
-
         return result;
     }
 
-
-    public static String getResourceFilePath(String fileName) {
-        URL url = Util.class.getClassLoader().getResource(fileName);
-
-        System.out.println("URL: " + url);
-        try {
-            System.out.println("URI: " + url.toURI());
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
-
-        return (url != null) ? url.getPath() : null;
-    }
 
     public static String getApplicationPath() {
         Class mainClass = getApplicationMainClass();
