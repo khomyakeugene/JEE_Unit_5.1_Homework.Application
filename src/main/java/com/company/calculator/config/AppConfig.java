@@ -25,6 +25,12 @@ public class AppConfig {
     private static final String DECREMENT_CODE = "--";
     private static final String FACTORIAL_CODE = "!";
 
+    // To support aop-logging
+    @Bean
+    public LogAspect logAspect() {
+        return new LogAspect();
+    }
+
     @Bean
     public SimpleCalculator simpleCalculator () {
         SimpleCalculator simpleCalculator = new SimpleCalculator();
@@ -41,12 +47,6 @@ public class AppConfig {
         simpleCalculator.addOperation(SUBTRACT_OPERATION_CODE, new DateSubtractOperation());
 
         return simpleCalculator;
-    }
-
-    // To support aop-logging
-    @Bean
-    public LogAspect logAspect() {
-        return new LogAspect();
     }
 }
 
