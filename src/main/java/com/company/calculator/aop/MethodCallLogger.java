@@ -1,6 +1,5 @@
 package com.company.calculator.aop;
 
-import com.company.util.Util;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
@@ -14,7 +13,6 @@ import static com.company.util.Util.getApplicationMainClass;
 public class MethodCallLogger {
     private static final String MESSAGE_PATTERN = "%s.%s";
 
-    private static MethodCallLogger instance;
     private static Logger logger;
 
     private MethodCallLogger() {
@@ -22,8 +20,6 @@ public class MethodCallLogger {
 
     private static void initLogger() {
         logger = Logger.getLogger(getApplicationMainClass());
-
-        System.out.println("getApplicationName :" + Util.getApplicationName());
     }
 
     public static Logger getLogger() {
