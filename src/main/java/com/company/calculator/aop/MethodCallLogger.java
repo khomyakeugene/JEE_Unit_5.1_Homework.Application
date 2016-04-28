@@ -4,6 +4,10 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
+import org.aspectj.lang.reflect.MethodSignature;
+
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Method;
 
 import static com.company.util.Util.getApplicationMainClass;
 
@@ -36,8 +40,35 @@ public class MethodCallLogger {
         String fullMethodName = String.format(MESSAGE_PATTERN, signature.getDeclaringTypeName(),
                 signature.getName());
 
+        MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+        Method method = methodSignature.getMethod();
+        String methodName = method.getName();
+        Class<?>[] parameterTypes = method.getParameterTypes();
+
+        for(Object argument : joinPoint.getArgs()) {
+            //I can get the parameter values here
+            System.out.println("Argument: " + argument);
+        }
+
+        try {
+            Method declaredMethod = joinPoint.getTarget().getClass()
+                    .getDeclaredMethod(methodName, parameterTypes);
+            method = declaredMethod;
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }
+
+        Annotation[][] annotations = method.getParameterAnnotations();
+        for (int i = 0; i < annotations.length; i++) {
+            System.out.println("annotations[i] :" + annotations[i]);
+            for (int j = 0; j < annotations[i].length; j++) {
+                System.out.println("annotations[i][j] :" + annotations[i][j]);
+            }
+        }
+
+
         return fullMethodName;
-   }
+    }
 
     // printing methods:
     public static void trace(JoinPoint joinPoint) {
