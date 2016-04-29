@@ -107,4 +107,14 @@ public class Util {
     public static long nanoToMilliTime(long nanoTime) {
         return nanoTime / 1000;
     }
+
+    public static String toString(Object object) {
+        String result = object.toString();
+
+        if (object instanceof String) {
+            result =  "\"" + result + "\"";
+        }
+
+        return result;
+    }
 }

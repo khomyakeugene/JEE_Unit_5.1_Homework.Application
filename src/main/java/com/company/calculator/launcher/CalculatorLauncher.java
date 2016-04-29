@@ -21,7 +21,7 @@ public class CalculatorLauncher {
                     Arrays.toString(simpleCalculator.operationCodeList())));
             if (!expression.isEmpty()) {
                 try {
-                    Util.printMessage(String.format(RESULT_PATTERN, expression, simpleCalculator.execute(expression)));
+                    Util.printMessage(String.format(RESULT_PATTERN, expression, simpleCalculator.execute(expression.trim())));
                 } catch (IllegalArgumentException e) {
                     Util.printMessage(e.getMessage());
                 }

@@ -44,7 +44,7 @@ public class AOPLogger {
             if (result.length() > 0) {
                 result = result + ", ";
             }
-            result = String.format("%s%s = %s", result, parameterNames[i], parameterValues[i]);
+            result = String.format("%s%s = %s", result, parameterNames[i], Util.toString(parameterValues[i]));
         }
 
         return result;
@@ -60,7 +60,7 @@ public class AOPLogger {
                 result = Arrays.toString((Object[]) methodResult);
             } else {
                 // All "another" types
-                result = methodResult.toString();
+                result = Util.toString(methodResult);
             }
         }
 
