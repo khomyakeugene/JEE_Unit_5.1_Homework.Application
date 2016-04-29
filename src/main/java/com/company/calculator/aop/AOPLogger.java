@@ -77,7 +77,13 @@ public class AOPLogger {
     }
 
     public static String logMessage(JoinPoint joinPoint, Object result, long executionNanoTime) {
-        return String.format(MESSAGE_EXECUTION_NANO_TIME_PATTERN, logMessage(joinPoint, result), executionNanoTime / 1000);
+        return String.format(MESSAGE_EXECUTION_NANO_TIME_PATTERN, logMessage(joinPoint, result),
+                Util.nanoToMilliTime(executionNanoTime));
+    }
+
+    public static String logMessage(JoinPoint joinPoint, long executionNanoTime) {
+        return String.format(MESSAGE_EXECUTION_NANO_TIME_PATTERN, logMessage(joinPoint),
+                Util.nanoToMilliTime(executionNanoTime));
     }
 
     // printing methods:
@@ -85,11 +91,7 @@ public class AOPLogger {
         getLogger().info(logMessage(joinPoint, result, executionNanoTime));
     }
 
-    public static void error(JoinPoint joinPoint) {
-        getLogger().error(logMessage(joinPoint));
-    }
-
-    public static void fatal(JoinPoint joinPoint) {
-        getLogger().fatal(logMessage(joinPoint));
+    public static void error(JoinPoint joinPoint, Throwable throwable, long executionNanoTime) {
+        getLogger().error(logMessage(joinPoint, executionNanoTime), throwable);
     }
 }

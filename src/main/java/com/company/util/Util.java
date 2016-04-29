@@ -103,4 +103,8 @@ public class Util {
     public static long getNanoTime() {
         return System.nanoTime();
     }
+
+    public static long nanoToMilliTime(long nanoTime) {
+        return nanoTime / 1000;
+    }
 }
